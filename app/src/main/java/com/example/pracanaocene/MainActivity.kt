@@ -9,12 +9,10 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.example.pracanaocene.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,9 +20,18 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var liczbapierwsza = 1
-        var liczbadruga =  2
+        var liczbapierwsza = 0
+        var liczbadruga = 0
         var wynik = 0
+        findViewById<Button>(R.id.wyswietl).setOnClickListener {
+            findViewById<TextView>(R.id.wynik).text = findViewById<TextInputEditText>(R.id.wprow1).text
+        }
+        findViewById<Button>(R.id.dodipol).setOnClickListener {
+            findViewById<TextView>(R.id.wynik).text =
+                findViewById<TextView>(R.id.wynik).text.toString() + findViewById<TextInputEditText>(R.id.wprow1).text.toString()
+
+
+        }
         super.onCreate(savedInstanceState)
 
 
@@ -41,13 +48,6 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener { view ->
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
-
-            findViewById<Button>(R.id.butn_suma).setOnClickListener {
-                findViewById<TextInputLayout>(R.id.wprow1).hint
-                wynik = liczbapierwsza + liczbadruga
-                findViewById<TextView>(R.id.wynik).text = wynik.toString()
-
-            }
         }
     }
 
