@@ -10,6 +10,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.example.pracanaocene.databinding.ActivityMainBinding
 import com.google.android.material.textfield.TextInputEditText
@@ -24,13 +25,17 @@ class MainActivity : AppCompatActivity() {
         var liczbadruga = 0
         var wynik = 0
         findViewById<Button>(R.id.wyswietl).setOnClickListener {
-            findViewById<TextView>(R.id.wynik).text = findViewById<TextInputEditText>(R.id.wprow1).text
+            findViewById<TextView>(R.id.wynik).text = findViewById<TextInputEditText>(R.id.hint1).text
         }
         findViewById<Button>(R.id.dodipol).setOnClickListener {
             findViewById<TextView>(R.id.wynik).text =
                 findViewById<TextView>(R.id.wynik).text.toString() + findViewById<TextInputEditText>(R.id.wprow1).text.toString()
-
-
+        }
+        findViewById<Button>(R.id.butn_suma).setOnClickListener {
+            liczbapierwsza = findViewById<EditText>(R.id.wprow1).text.toString().toInt()
+            liczbadruga = findViewById<EditText>(R.id.wprow2).text.toString().toInt()
+            wynik = liczbapierwsza + liczbadruga
+            findViewById<TextView>(R.id.wynik).text = liczbapierwsza.toString()+"+" + liczbadruga.toString()+"=" + wynik.toString()
         }
         super.onCreate(savedInstanceState)
 
